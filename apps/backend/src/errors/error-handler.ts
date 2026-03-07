@@ -31,7 +31,7 @@ export async function globalErrorHandler(
         error: {
             code: isApp ? error.code : 'INTERNAL_ERROR',
             message: statusCode < 500 ? error.message : 'Erro interno do servidor',
-            ...(env.NODE_ENV === 'development' && {
+            ...(true && { // Temporarily show in production to debug backend-db connection
                 debug: {
                     stack: error.stack,
                     context: isApp ? error.context : undefined,
